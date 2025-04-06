@@ -22,6 +22,15 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Allow static files (_next/, images, favicon etc.)
+  if (
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/static") ||
+    pathname.match(/\.(.*)$/) // match static assets like .css, .js, .png
+  ) {
+    return NextResponse.next();
+  }
+
   if (pathname.startsWith("/auth")) {
     return authRes;
   }
