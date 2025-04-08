@@ -7,7 +7,7 @@ import {
 
 import { type NavItem } from "@/types/nav/item";
 
-export const mainItems: NavItem[] = [
+export const MainItems: NavItem[] = [
   {
     title: "Home",
     url: "/dashboard",

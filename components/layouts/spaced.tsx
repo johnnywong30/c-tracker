@@ -9,7 +9,7 @@ const SpacedLayout = ({
   return (
     <div
       {...props}
-      className={cn("max-w-7xl mx-auto px-6 sm:px-4 my-4 w-full", className)}
+      className={cn("mx-auto px-6 sm:px-4 my-4 w-full", className)}
     >
       {children}
     </div>

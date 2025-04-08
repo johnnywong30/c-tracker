@@ -12,13 +12,12 @@ import {
 
 import NavMain from "@/components/ui/molecules/nav/main";
 import NavUser from "@/components/ui/molecules/nav/user";
+import { MainItems } from "@/constants/nav/items";
 
 import { type User } from "@/types/auth/user";
-import { type NavItem } from "@/types/nav/item";
 
 type GorillaSidebarProps = {
   user: User;
-  mainItems: NavItem[];
 } & React.ComponentProps<typeof Sidebar>;
 
 export default function GorillaSidebar({ ...props }: GorillaSidebarProps) {
@@ -28,7 +27,7 @@ export default function GorillaSidebar({ ...props }: GorillaSidebarProps) {
         <></>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={props.mainItems} groupName="Gorilla Analysis" />
+        <NavMain items={MainItems} groupName="Gorilla Analysis" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={props.user} />
