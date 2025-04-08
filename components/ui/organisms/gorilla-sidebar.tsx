@@ -8,6 +8,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { useSidebar } from "@/components/ui/sidebar";
@@ -25,18 +26,20 @@ type GorillaSidebarProps = {
 } & React.ComponentProps<typeof Sidebar>;
 
 export default function GorillaSidebar({ ...props }: GorillaSidebarProps) {
-  const { state } = useSidebar();
+  const { state, isMobile } = useSidebar();
 
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <></>
-      </SidebarHeader>
+      <SidebarHeader>{isMobile && <SidebarTrigger />}</SidebarHeader>
       <SidebarContent>
         <NavMain items={MainItems} groupName="Gorilla Analysis" />
       </SidebarContent>
       <SidebarFooter>
-        {state === "collapsed" ? <ThemeMenuToggle /> : <ThemeGroupToggle />}
+        {state === "expanded" || isMobile ? (
+          <ThemeGroupToggle />
+        ) : (
+          <ThemeMenuToggle />
+        )}
         <Separator />
         <NavUser user={props.user} />
       </SidebarFooter>
